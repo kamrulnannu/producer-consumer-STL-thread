@@ -1,0 +1,88 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20
+  },
+  "configurePresets": [
+    {
+      "name": "info",
+      "displayName": "Run one of the following from project root:\n cmake --list-presets\n or cmake --preset clang\n or cmake --build --preset clang\n or cmake --preset gcc\n or cmake --build --preset gcc\n or cmake --preset msvc\n or cmake --build --preset msvc\n or cmake --preset clang-debug\n or cmake --preset gcc-debug\n or cmake --preset msvc-debug\n\n",
+      "hidden": false
+    },
+    {
+      "name": "clang",
+      "displayName": "Clang Build",
+      "generator": "Unix Makefiles",
+      "binaryDir": "build/clang",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++",
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    },
+    {
+      "name": "clang-debug",
+      "inherits": "clang",
+      "displayName": "Clang Debug Build",
+      "binaryDir": "build/clang-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "gcc",
+      "displayName": "GCC Build",
+      "generator": "Unix Makefiles",
+      "binaryDir": "build/gcc",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++",
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    },
+    {
+      "name": "gcc-debug",
+      "inherits": "gcc",
+      "displayName": "GCC Debug Build",
+      "binaryDir": "build/gcc-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "msvc",
+      "displayName": "MSVC Release Build",
+      "generator": "Visual Studio 17 2022",
+      "binaryDir": "build/msvc",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "cl.exe",
+        "CMAKE_CXX_COMPILER": "cl.exe",
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    },
+    {
+      "name": "msvc-debug",
+      "inherits": "msvc",
+      "displayName": "MSVC Debug Build",
+      "binaryDir": "build/msvc-debug",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    }
+  ]
+}
+

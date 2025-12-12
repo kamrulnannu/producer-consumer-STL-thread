@@ -72,4 +72,4 @@ NOTE: To validate any json file use:
 TEST: 
     To run test from project root directory, execute the following command:
 
-    $ ./build/bin/ProducerConsumer sample_input.csv sample_output.csv
+    $ ./build/bin/ProducerConsumer
